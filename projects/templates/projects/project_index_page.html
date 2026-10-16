@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags %}
+
+{% block content %}
+<section class="page-heading">
+    <div class="eyebrow">Projects</div>
+    <h1>{{ page.title }}</h1>
+    <p class="lede">Case studies, experiments, and security-focused builds.</p>
+</section>
+
+<section class="card-list">
+    {% for project in projects %}
+        <article class="card card-wide">
+            <h2><a href="{% pageurl project %}">{{ project.title }}</a></h2>
+            <p>{{ project.summary }}</p>
+        </article>
+    {% empty %}
+        <p class="muted">No project pages yet.</p>
+    {% endfor %}
+</section>
+{% endblock %}

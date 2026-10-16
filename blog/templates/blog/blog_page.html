@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags %}
+
+{% block content %}
+<article class="article">
+    <div class="eyebrow">Blog post</div>
+    <h1>{{ page.title }}</h1>
+    <p class="lede">{{ page.summary }}</p>
+    <p class="meta">{{ page.published_date|date:"M j, Y" }} · {{ page.reading_time_minutes }} min{% if page.topic %} · {{ page.topic }}{% endif %}</p>
+
+    <div class="prose article-body">
+        {{ page.body|richtext }}
+    </div>
+</article>
+{% endblock %}

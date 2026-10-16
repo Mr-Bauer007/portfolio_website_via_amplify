@@ -1,0 +1,33 @@
+{% load static wagtailcore_tags %}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}{% if page %}{{ page.title }} | {% endif %}Portfolio Site{% endblock %}</title>
+    <meta name="description" content="Portfolio site and information-security blog.">
+    <link rel="stylesheet" href="{% static 'css/site.css' %}">
+    {% block extra_head %}{% endblock %}
+</head>
+<body>
+    <div class="bg-orb bg-orb-one"></div>
+    <div class="bg-orb bg-orb-two"></div>
+
+    <header class="site-header">
+        <a class="brand" href="/">Portfolio Site</a>
+        <nav class="site-nav" aria-label="Primary">
+            <a href="/">Home</a>
+            <a href="/projects/">Projects</a>
+            <a href="/blog/">Blog</a>
+        </nav>
+    </header>
+
+    <main class="shell">
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer class="site-footer">
+        <p>Built for a local-first launch, then EC2, S3 storage, and a custom domain later.</p>
+    </footer>
+</body>
+</html>
