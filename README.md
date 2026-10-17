@@ -1,5 +1,7 @@
 # Portfolio Site
 
+A project to test different methods of deploying web apps to AWS, starting with a static amplify-deployed website.
+
 Local-first Django + Wagtail portfolio site with an information-security blog.
 
 ## Local development

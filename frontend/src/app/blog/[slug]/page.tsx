@@ -14,10 +14,16 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
 
   return (
     <article className="page-width article-page">
-      <p className="kicker">{post.topic || "Security"} / {post.published_date}</p>
+      <div className="eyebrow">Blog post</div>
       <h1>{post.meta.title}</h1>
-      <p className="article-summary">{post.summary}</p>
-      <div className="article-body" dangerouslySetInnerHTML={{ __html: post.body ?? "" }} />
+      <p className="lede">{post.summary}</p>
+      <p className="meta">{formatDate(post.published_date)} · {post.reading_time_minutes} min{post.topic ? ` · ${post.topic}` : ""}</p>
+      <div className="prose article-body" dangerouslySetInnerHTML={{ __html: post.body ?? "" }} />
     </article>
   );
+}
+
+function formatDate(value?: string) {
+  if (!value) return "";
+  return new Intl.DateTimeFormat("en-US", { month: "short", day: "numeric", year: "numeric" }).format(new Date(`${value}T00:00:00`));
 }

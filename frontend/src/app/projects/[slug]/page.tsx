@@ -14,18 +14,15 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
 
   return (
     <article className="page-width article-page project-article">
-      <p className="kicker">Project / {project.tools || "Security engineering"}</p>
+      <div className="eyebrow">Project</div>
       <h1>{project.meta.title}</h1>
-      <p className="article-summary">{project.summary}</p>
-      <div className="project-details">
+      <p className="lede">{project.summary}</p>
+      <div className="article-grid">
         <Detail title="Challenge" content={project.challenge} />
         <Detail title="Approach" content={project.approach} />
         <Detail title="Impact" content={project.impact} />
       </div>
-      <div className="project-links">
-        {project.repo_url && <a href={project.repo_url}>Repository ↗</a>}
-        {project.demo_url && <a href={project.demo_url}>Live demo ↗</a>}
-      </div>
+      {(project.tools || project.repo_url || project.demo_url) && <section className="panel"><h2>Details</h2>{project.tools && <p><strong>Tools:</strong> {project.tools}</p>}{project.repo_url && <p><a href={project.repo_url}>Repository</a></p>}{project.demo_url && <p><a href={project.demo_url}>Live demo</a></p>}</section>}
     </article>
   );
 }
@@ -33,8 +30,8 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
 function Detail({ title, content }: { title: string; content?: string }) {
   return (
     <section>
-      <p className="kicker">{title}</p>
-      <div className="article-body" dangerouslySetInnerHTML={{ __html: content ?? "" }} />
+      <h2>{title}</h2>
+      <div className="prose" dangerouslySetInnerHTML={{ __html: content ?? "" }} />
     </section>
   );
 }

@@ -15,15 +15,15 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <div className="ambient ambient-two" />
         <header className="site-header">
           <Link className="brand" href="/">Portfolio Site</Link>
-          <nav aria-label="Primary navigation">
+          <nav className="site-nav" aria-label="Primary">
+            <Link href="/">Home</Link>
             <Link href="/projects/">Projects</Link>
-            <Link href="/blog/">Writing</Link>
+            <Link href="/blog/">Blog</Link>
           </nav>
         </header>
-        <main>{children}</main>
+        <main className="shell">{children}</main>
         <footer className="site-footer">
-          <span>Independent security engineering</span>
-          <span>Built with Wagtail + Next.js</span>
+          <p>Built for a local-first launch, then EC2, S3 storage, and a custom domain later.</p>
         </footer>
       </body>
     </html>
